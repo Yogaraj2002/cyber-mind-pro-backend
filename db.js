@@ -9,9 +9,9 @@ const sequelize = new Sequelize(
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false, 
-      },
+        rejectUnauthorized: false
+      }
     },
-    logging: true, // temporarily enable logging
+    logging: true
   }
 );
