@@ -1,3 +1,4 @@
+// models/Job.js
 import { DataTypes } from "sequelize";
 import sequelize from "../db.js";
 
@@ -10,7 +11,7 @@ const Job = sequelize.define("Job", {
   salaryMax: { type: DataTypes.INTEGER },
   description: { type: DataTypes.TEXT },
   experience: { type: DataTypes.STRING },
-  applicationDeadline: { type: DataTypes.DATE }
+  applicationDeadline: { type: DataTypes.DATE },
 });
 
 export default Job;
