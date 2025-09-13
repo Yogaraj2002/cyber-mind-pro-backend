@@ -3,15 +3,18 @@ import Job from "../models/Job.js";
 
 const router = express.Router();
 
-// Get all jobs
 router.get("/", async (req, res) => {
   try {
     const jobs = await Job.findAll({ order: [["createdAt", "DESC"]] });
+    console.log("Fetched jobs:", jobs); // debug
     res.json(jobs);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch jobs" });
+    console.error("Failed to fetch jobs:", err); // debug
+    res.status(500).json({ error: "Internal server error. Check server logs for details." });
   }
 });
+
+
 
 
 router.post("/", async (req, res) => {
