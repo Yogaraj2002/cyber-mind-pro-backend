@@ -6,11 +6,11 @@ const Job = sequelize.define("Job", {
   companyName: { type: DataTypes.STRING, allowNull: false },
   location: { type: DataTypes.STRING, allowNull: false },
   jobType: { type: DataTypes.STRING, allowNull: false },
-  salaryMin: { type: DataTypes.INTEGER, allowNull: true },
-  salaryMax: { type: DataTypes.INTEGER, allowNull: true },
-  description: { type: DataTypes.TEXT, allowNull: true },
-  experience: { type: DataTypes.STRING, allowNull: true },
-  applicationDeadline: { type: DataTypes.DATE, allowNull: true }
+  salaryMin: { type: DataTypes.INTEGER },
+  salaryMax: { type: DataTypes.INTEGER },
+  description: { type: DataTypes.TEXT },
+  experience: { type: DataTypes.STRING },
+  applicationDeadline: { type: DataTypes.DATE }
 });
 
 export default Job;
