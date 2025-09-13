@@ -30,10 +30,12 @@ app.use(express.json());
 // Routes
 app.use("/api/jobs", jobsRouter);
 
-// Connect DB & start server
 sequelize.sync({ alter: true })
   .then(() => {
     console.log("Database connected & synced");
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
-  .catch(err => console.error("DB connection failed:", err));
+  .catch(err => {
+    console.error("DB connection failed:", err);
+    process.exit(1); 
+  });
