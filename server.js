@@ -1,3 +1,4 @@
+// server.js
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -17,7 +18,7 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
+    origin: (origin, callback) => {
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
       return callback(new Error("Not allowed by CORS"));
@@ -32,7 +33,7 @@ app.use(express.json());
 // Routes
 app.use("/api/jobs", jobsRouter);
 
-// Connect DB & start server
+// Connect to DB and start server
 sequelize
   .authenticate()
   .then(() => {
@@ -44,5 +45,5 @@ sequelize
   })
   .catch((err) => {
     console.error("Failed to connect to database:", err);
-    process.exit(1); // exit process if DB fails
+    process.exit(1);
   });
