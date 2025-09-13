@@ -1,4 +1,3 @@
-// routes/jobs.js
 import express from "express";
 import Job from "../models/Job.js";
 
@@ -15,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// POST a new job
+// POST new job
 router.post("/", async (req, res) => {
   try {
     const job = await Job.create(req.body);
@@ -26,15 +25,14 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET single job by id
+// GET single job
 router.get("/:id", async (req, res) => {
   try {
     const job = await Job.findByPk(req.params.id);
     if (!job) return res.status(404).json({ error: "Job not found" });
     res.json(job);
   } catch (err) {
-    console.error("Failed to fetch job:", err);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Failed to fetch job" });
   }
 });
 
@@ -46,8 +44,7 @@ router.delete("/:id", async (req, res) => {
     await job.destroy();
     res.json({ message: "Job deleted successfully" });
   } catch (err) {
-    console.error("Failed to delete job:", err);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Failed to delete job" });
   }
 });
 
